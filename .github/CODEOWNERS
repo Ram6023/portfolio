@@ -1,0 +1,20 @@
+# ======================
+# CODEOWNERS for Portfolio
+# ======================
+# These owners will be the default owners for everything in the repo.
+# They will be requested for review when someone opens a pull request.
+
+# Global owners
+*   @Ram6023
+
+# Source code
+/src/    @Ram6023
+
+# Configuration files
+*.json   @Ram6023
+*.yml    @Ram6023
+*.yaml   @Ram6023
+*.mjs    @Ram6023
+
+# Documentation
+*.md     @Ram6023
