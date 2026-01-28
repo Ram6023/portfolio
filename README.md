@@ -6,7 +6,7 @@
 🚀 Welcome to my personal portfolio website! Dive into my digital realm where coding expertise and creative design converge to create extraordinary web experiences.
  
 ## 🌐 Live Demo  
-**Coming Soon** - Portfolio deployment in progress
+**Coming Soon** - Portfolio deployment in progress 
 
 ## ✨ Features
 
