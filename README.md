@@ -1,21 +1,36 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub](https://img.shields.io/badge/GitHub-Ram6023-181717?logo=github)](https://github.com/Ram6023)
   
-# Sriram | Personal Portfolio | Fullstack Web Developer
- 
-🚀 Welcome to my personal portfolio website! Dive into my digital realm where coding expertise and creative design converge to create extraordinary web experiences.
- 
+<div align="center">
+  <img src="./public/Hero-Banner.png" alt="Sriram's Portfolio Banner" width="100%"/>
+</div>
+
+# Sriram | Fullstack Web Developer
+
+🚀 Welcome to my digital realm! I'm Sriram, a full-stack developer dedicated to building high-performance, visually stunning, and user-centric web applications. This portfolio showcases my journey, skills, and the exciting projects I've built.
+
 ## 🌐 Live Demo  
-**Coming Soon** - Portfolio deployment in progress 
+[sriram-portfolio.netlify.app](https://sriram-portfolio.netlify.app/)
 
 ## ✨ Features
 
+- **💡 Dynamic Project Routes** - Fully dynamic routing for project pages
 - **⚡ Lightning Fast** - Built with Astro for optimized performance and fast load times
 - **🎨 Interactive Animations** - Smooth orbital animations powered by GSAP
 - **🌙 Dark/Light Theme** - Seamless theme switching with persistent preferences
 - **📱 Fully Responsive** - Tailored for all devices using TailwindCSS
 - **🔍 SEO Optimized** - Enhanced visibility with meta tags and sitemap
 - **📲 PWA Ready** - Installable as a Progressive Web App
+
+## 🏗️ Featured Projects
+
+### [Syslab](https://ram6023.github.io/Syslab/)
+An immersive, premium systems engineering laboratory designed to visualize and simulate low-level computing concepts with a futuristic "Command Center" aesthetic.
+- **Tech:** Vue 3, TypeScript, Tailwind CSS, @vueuse/motion
+
+### [CareerCompass AI](https://ram6023.github.io/career-compass/)
+An AI-powered career intelligence platform providing personalized career insights and strategic planning.
+- **Tech:** React, TypeScript, Google AI, Framer Motion
 
 ## 🛠️ Tech Stack
 
@@ -117,9 +132,9 @@ The built files will be in the `dist/` directory, ready for deployment.
 
 <div align="center">
   <a href="https://github.com/Ram6023"><img src="https://skillicons.dev/icons?i=github" alt="GitHub" width="40" height="40"/></a>&emsp;
-  <a href="https://linkedin.com/in/sriram-ram6023"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" width="40" height="40"/></a>&emsp;
-  <a href="https://x.com/Ram6023"><img src="https://skillicons.dev/icons?i=twitter" alt="Twitter" width="40" height="40"/></a>&emsp;
-  <a href="https://instagram.com/sriram_ram6023"><img src="https://skillicons.dev/icons?i=instagram" alt="Instagram" width="40" height="40"/></a>&emsp;
+  <a href="https://www.linkedin.com/in/sriram-ram6023/"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" width="40" height="40"/></a>&emsp;
+  <a href="https://leetcode.com/u/sriram799/"><img src="https://skillicons.dev/icons?i=js" alt="LeetCode" width="40" height="40"/></a>&emsp;
+  <a href="https://www.instagram.com/_.sriramnaidu._?igsh=MXBpNDVtczBuMGFiaA=="><img src="https://skillicons.dev/icons?i=instagram" alt="Instagram" width="40" height="40"/></a>&emsp;
 </div>
 
 ## 📄 License
