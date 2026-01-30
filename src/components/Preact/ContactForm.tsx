@@ -1,13 +1,12 @@
 import { useState, useRef } from 'preact/hooks'
-import emailjs from "@emailjs/browser"
 
 type StatusType = {
-    status: boolean,
+    status: 'idle' | 'success' | 'error',
     message: string
 }
 
 const ContactForm = () => {
-    const [mailStatus, setMailStatus] = useState<StatusType>({ status: false, message: "" })
+    const [mailStatus, setMailStatus] = useState<StatusType>({ status: 'idle', message: "" })
     const [isLoading, setisLoading] = useState<boolean>(false)
 
     const NameRef = useRef<HTMLInputElement>(null)
@@ -19,47 +18,60 @@ const ContactForm = () => {
 
         if (!NameRef.current || !EmailRef.current || !MessageRef.current) return
 
-        const name = NameRef?.current?.value as string;
-        const email = EmailRef?.current?.value as string;
-        const message = MessageRef?.current?.value as string;
+        const name = NameRef.current.value;
+        const email = EmailRef.current.value;
+        const message = MessageRef.current.value;
 
-        const templateParams = {
-            from_name: name,
-            from_email: email,
-            message: message,
+        // Simple validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(email)) {
+            setMailStatus({ status: 'error', message: '🙄 Invalid Email ID!' })
+            return
         }
 
+        setisLoading(true)
+        setMailStatus({ status: 'idle', message: "" })
+
         try {
+            const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY;
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-            if (!emailRegex.test(email)) {
-                throw new Error('🙄 Invalid Email ID!')
+            if (!accessKey) {
+                throw new Error("Missing Web3Forms Access Key. Please check your .env file.")
             }
 
-            setisLoading(true)
-            const mailRes = await emailjs.send(
-                import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
-                import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
-                templateParams,
-                import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY
-            );
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: accessKey,
+                    name: name,
+                    email: email,
+                    message: message,
+                    subject: `New Message from Portfolio: ${name}`,
+                    from_name: "Portfolio Contact Bot",
+                }),
+            });
 
-            if (mailRes.status !== 200) {
-                throw new Error("😵 Message not Sent")
+            const result = await response.json();
+
+            if (result.success) {
+                setMailStatus({ status: 'success', message: "👍 Message Sent!" })
+                NameRef.current.value = ""
+                EmailRef.current.value = ""
+                MessageRef.current.value = ""
+            } else {
+                throw new Error(result.message || "😵 Message not Sent")
             }
-
-            setMailStatus({ status: true, message: "👍 Message Sent!" })
-            setisLoading(false)
-
-            NameRef.current.value = ""
-            EmailRef.current.value = ""
-            MessageRef.current.value = ""
-        } catch (error: { message: string } | any) {
-            setMailStatus({ status: false, message: error.message })
+        } catch (error: any) {
+            setMailStatus({ status: 'error', message: error.message || "An error occurred" })
         } finally {
+            setisLoading(false)
             setTimeout(() => {
-                setMailStatus({ status: false, message: "" })
-            }, 3000);
+                setMailStatus({ status: 'idle', message: "" })
+            }, 5000);
         }
     }
 
@@ -106,12 +118,13 @@ const ContactForm = () => {
                     name="message"
                     placeholder="Enter your Message"
                     className="w-full p-2 mt-1 rounded-md border-none outline-none bg-background text-foreground resize-none"
+                    required
                     ref={MessageRef} />
             </label>
 
             <div className="w-full flex justify-start items-center gap-4">
                 <button
-                    className="flex_center gap-4 border-none bg-background text-foreground outline outline-1 outline-white/20 my-1 mx-2 py-2 px-6 lg:px-20 rounded-md"
+                    className="flex_center gap-4 border-none bg-background text-foreground outline outline-1 outline-white/20 my-1 mx-2 py-2 px-6 lg:px-20 rounded-md transition-all hover:bg-white/10"
                     type="submit"
                     disabled={isLoading}
                 >
@@ -119,17 +132,19 @@ const ContactForm = () => {
                         isLoading ? (
                             <>
                                 <span>Sending</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-loader-2 animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-loader-2 animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg>
                             </>
                         ) : (
                             <>
                                 <span>Submit</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z" /><path d="M6 12h16" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z" /><path d="M6 12h16" /></svg>
                             </>
                         )
                     }
                 </button>
-                <span>{mailStatus.message}</span>
+                <span className={mailStatus.status === 'error' ? 'text-red-400' : 'text-green-400'}>
+                    {mailStatus.message}
+                </span>
             </div>
         </form>
     )

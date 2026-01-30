@@ -21,13 +21,10 @@ const { ProjectsList } = await ProjectInfo;
                     if (project?.hideProject) return;
 
                     return (
-                        <div class="Project_Stagger Card_Main w-full h-fit flex_center flex-col bg-cardGradient overflow-hidden rounded-[0.4em] mt-3 opacity-0">
+                        <div class="Project_Stagger Card_Main w-full h-full flex flex-col bg-cardGradient overflow-hidden rounded-[0.4em] mt-3 opacity-0">
                             <a
-                                href={`/projects/${project?.Name.replaceAll(
-                                    " ",
-                                    "-",
-                                ).toLowerCase()}`}
-                                class="Projects_Preview w-full relative rounded-[0.4em]"
+                                href={`/projects/${project.Name.toLowerCase().replace(/\s+/g, "-")}`}
+                                class="Projects_Preview w-full relative rounded-[0.4em] shrink-0"
                             >
                                 <Image
                                     class="Card_Image bg-cover opacity-50 transition-opacity w-full"
@@ -49,7 +46,7 @@ const { ProjectsList } = await ProjectInfo;
                                     loading="lazy"
                                 />
                             </a>
-                            <div class="w-full text-[0.95em] px-4">
+                            <div class="w-full text-[0.95em] px-4 flex flex-col flex-1">
                                 <div class="flex justify-between items-center">
                                     <h3 class="font-ubuntu text-[1.4em] py-3">
                                         {project.Name}
@@ -79,9 +76,9 @@ const { ProjectsList } = await ProjectInfo;
                                         </a>
                                     </div>
                                 </div>
-                                <p class="text-center">{project.ShortDesc}</p>
+                                <p class="text-center flex-1">{project.ShortDesc}</p>
 
-                                <div class="w-full flex_center gap-4 py-3">
+                                <div class="w-full flex_center gap-4 py-3 shrink-0">
                                     {project.Tech.map((tech) => {
                                         return (
                                             <Image

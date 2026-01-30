@@ -1,38 +1,31 @@
 ---
-export function getStaticPaths() {
-    return [
-        { params: { projectID: "arms-v3" } },
-        { params: { projectID: "vortexa" } },
-        { params: { projectID: "next-mart" } },
-        { params: { projectID: "arms-v2" } },
-        { params: { projectID: "xrecon" } },
-        { params: { projectID: "yoatube" } },
-        { params: { projectID: "srinivas-exam-manager" } },
-        { params: { projectID: "piktures" } },
-        { params: { projectID: "days-beyond" } },
-        { params: { projectID: "arms-v1" } },
-        { params: { projectID: "film-stack" } },
-        { params: { projectID: "covidtrax" } },
-        { params: { projectID: "climate" } },
-    ];
-}
-const { projectID } = Astro.params;
-
 import { Image } from "astro:assets";
 import { ProjectLayout } from "../../layouts";
-import { CheckIcon, ClipboardCopyIcon, ExternalLinkIcon } from "lucide-preact";
+import {
+    CheckIcon,
+    ClipboardCopyIcon,
+    ExternalLinkIcon,
+} from "lucide-preact";
 import { CenterTitle, SectionTitle } from "../../components/UI";
+import { ProjectsList } from "../../utils/ProjectsList";
 
-// Lazy loading ProjectInfo
-const ProjectInfo = import("../../utils/ProjectsList");
-const { ProjectsList } = await ProjectInfo;
-const [project] = ProjectsList.filter(
-    (itm) => itm.Name.replaceAll(" ", "-").toLowerCase() === projectID,
+export function getStaticPaths() {
+    return ProjectsList.map((project) => ({
+        params: { projectID: project.Name.toLowerCase().replace(/\s+/g, "-") },
+    }));
+}
+
+const { projectID } = Astro.params;
+
+const project = ProjectsList.find(
+    (itm) => itm.Name.toLowerCase().replace(/\s+/g, "-") === projectID,
 );
+
+if (!project) return Astro.redirect("/404");
 ---
 
 <ProjectLayout
-    title=`${project.Name} | ChiragChrg`
+    title=`${project.Name} | Sriram`
     description={project.ShortDesc}
 >
     <div class="Fade_In flex_center absolute inset-0 w-full h-full z-[-1]">

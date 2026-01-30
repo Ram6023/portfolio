@@ -1,0 +1,9 @@
+<svg width="57.8" height="72.301" viewBox="0 0 57.8 72.301" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="Gradient">
+            <stop stop-color="#6600FF" offset="0%" />
+            <stop stop-color="#ff00bf" offset="100%" />
+        </linearGradient>
+    </defs>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Ubuntu, sans-serif" font-weight="bold" font-size="60" fill="url(#Gradient)">S</text>
+</svg>

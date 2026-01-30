@@ -89,6 +89,20 @@ To personalize this portfolio for your own use:
 5. Update `public/manifest.json` with your details
 6. Modify SEO metadata in `src/layouts/Layout.astro`
 
+## 📧 Contact Form Setup
+
+The contact form uses **Web3Forms** for receiving messages. To set it up:
+
+1.  Visit [Web3Forms](https://web3forms.com/) and enter your email to get a free **Access Key**.
+2.  Create a `.env` file in the root directory (or rename `.env.example`).
+3.  Add your access key:
+    ```env
+    PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
+    ```
+4.  Restart the development server.
+
+Messages sent through the form will now be delivered directly to your email!
+
 ## 📦 Build for Production
 
 ```bash

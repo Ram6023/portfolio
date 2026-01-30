@@ -1,4 +1,4 @@
-export { default as LogoIcon } from "./C.svg"
+export { default as LogoIcon } from "./S.svg"
 export { default as PurpleWave } from "./purpleWave.svg"
 export { default as ContactArt } from "./ContactVector.svg"
 
@@ -11,3 +11,4 @@ export { default as LinkedinIcon } from "./Linkedin.svg"
 export { default as TwitterIcon } from "./Twitter.svg"
 export { default as FaceBookIcon } from "./Facebook.svg"
 export { default as DiscordIcon } from "./Discord.svg"
+export { default as LeetcodeIcon } from "./LeetCode.svg"

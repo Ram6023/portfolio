@@ -37,7 +37,8 @@ import {
     GSAPIcon,
     FramerMotionIcon,
     BunIcon,
-    RIcon
+    RIcon,
+    VueIcon
 } from "../assets/Icons";
 import { GithubIcon } from "../assets/SVGs";
 
@@ -80,6 +81,7 @@ export const FrontendStack = [
         link: "https://zustand-demo.pmnd.rs/",
     },
     { name: "D3.js", icon: D3JsIcon, link: "https://d3js.org/" },
+    { name: "Vue.js", icon: VueIcon, link: "https://vuejs.org/" },
     { name: "Preact.js", icon: PreactIcon, link: "https://preactjs.com/" },
     {
         name: "Nanostores",

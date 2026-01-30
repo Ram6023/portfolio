@@ -15,6 +15,7 @@ export { default as ReactQueryIcon } from "./reactquery.svg"
 export { default as PreactIcon } from "./preactjs.svg"
 export { default as GSAPIcon } from "./gsap.svg"
 export { default as FramerMotionIcon } from "./framermotion.svg"
+export { default as VueIcon } from "./vue.svg"
 
 // Backend-Stack
 export { default as NodeIcon } from "./nodejs.svg"
