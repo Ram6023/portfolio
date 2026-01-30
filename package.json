@@ -6,7 +6,7 @@
   "author": {
     "name": "Sriram",
     "email": "sriram@example.com",
-    "url": "https://sriram-portfolio.netlify.app/"
+    "url": "https://sriramvissakoti.vercel.app/"
   },
   "scripts": {
     "dev": "astro dev --host",

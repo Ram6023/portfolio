@@ -6,11 +6,11 @@
 </div>
 
 # Sriram | Fullstack Web Developer
-
+a
 🚀 Welcome to my digital realm! I'm Sriram, a full-stack developer dedicated to building high-performance, visually stunning, and user-centric web applications. This portfolio showcases my journey, skills, and the exciting projects I've built.
 
 ## 🌐 Live Demo  
-[sriram-portfolio.netlify.app](https://sriram-portfolio.netlify.app/)
+[sriramvissakoti.vercel.app](https://sriramvissakoti.vercel.app/)
 
 ## ✨ Features
 
@@ -132,7 +132,7 @@ The built files will be in the `dist/` directory, ready for deployment.
 
 <div align="center">
   <a href="https://github.com/Ram6023"><img src="https://skillicons.dev/icons?i=github" alt="GitHub" width="40" height="40"/></a>&emsp;
-  <a href="https://www.linkedin.com/in/sriram-ram6023/"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" width="40" height="40"/></a>&emsp;
+  <a href="https://www.linkedin.com/in/sriram-vissakoti"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" width="40" height="40"/></a>&emsp;
   <a href="https://leetcode.com/u/sriram799/"><img src="https://skillicons.dev/icons?i=js" alt="LeetCode" width="40" height="40"/></a>&emsp;
   <a href="https://www.instagram.com/_.sriramnaidu._?igsh=MXBpNDVtczBuMGFiaA=="><img src="https://skillicons.dev/icons?i=instagram" alt="Instagram" width="40" height="40"/></a>&emsp;
 </div>
