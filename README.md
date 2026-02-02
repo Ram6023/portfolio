@@ -6,7 +6,7 @@
 </div>
 
 # Sriram | Fullstack Web Developer
-a
+
 🚀 Welcome to my digital realm! I'm Sriram, a full-stack developer dedicated to building high-performance, visually stunning, and user-centric web applications. This portfolio showcases my journey, skills, and the exciting projects I've built.
 
 ## 🌐 Live Demo  
