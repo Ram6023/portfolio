@@ -216,10 +216,10 @@ const { ProjectsList } = await ProjectInfo;
         cards.forEach(card => {
             const wrapper = card.closest('.project-card-wrapper');
             
-            wrapper?.addEventListener('mousemove', (e: MouseEvent) => {
+            wrapper?.addEventListener('mousemove', (e) => {
                 const rect = wrapper.getBoundingClientRect();
-                const x = (e as MouseEvent).clientX - rect.left;
-                const y = (e as MouseEvent).clientY - rect.top;
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
                 
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
@@ -227,11 +227,11 @@ const { ProjectsList } = await ProjectInfo;
                 const rotateX = (y - centerY) / 20;
                 const rotateY = (centerX - x) / 20;
                 
-                (card as HTMLElement).style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
             });
             
             wrapper?.addEventListener('mouseleave', () => {
-                (card as HTMLElement).style.transform = 'rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                card.style.transform = 'rotateX(0) rotateY(0) scale3d(1, 1, 1)';
             });
         });
     });
