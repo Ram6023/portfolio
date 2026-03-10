@@ -232,6 +232,39 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0);
 
+// --- 3D Experience Initialization ---
+import { Experience3D } from "./utils/threeScene";
+const canvasContainer = document.getElementById('three-canvas-container');
+
+if (canvasContainer) {
+    const experience = new Experience3D(canvasContainer);
+
+    // Mouse tracking for subtle 3D parallax
+    window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5);
+        const y = (e.clientY / window.innerHeight - 0.5);
+        experience.handleMouseMove(x, y);
+    });
+
+    // Camera movement based on sections
+    const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+
+    sections.forEach((sectionId) => {
+        const section = document.getElementById(sectionId === 'hero' ? 'Hero' : sectionId);
+        if (section) {
+            ScrollTrigger.create({
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+                onUpdate: (self) => {
+                    experience.updateCamera(self.progress, sectionId);
+                }
+            });
+        }
+    });
+}
+
 // Smooth scroll on Nav Link Click
 document
     .querySelectorAll('nav a, a[href^="#home"]')

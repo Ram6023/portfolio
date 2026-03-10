@@ -744,6 +744,28 @@ import { Footer } from "../components";
 				scale: 0.75;
 			}
 
+			#three-canvas-container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+				pointer-events: none;
+				/* Ensure the canvas doesn't block background themes */
+				background: transparent;
+			}
+
+			/* Make main sections transparent so the 3D scene shows through */
+			section {
+				background-color: transparent !important;
+			}
+			
+			body {
+				/* Add a subtle dark base to blend with Three.js */
+				background-color: var(--base);
+			}
+
 			@keyframes spin {
 				0% {
 					rotate: 0deg;
@@ -759,12 +781,13 @@ import { Footer } from "../components";
 		<Header />
 		<MobileHeader />
 
-		<main>
+		<main class="relative z-10">
 			<slot />
 		</main>
 
 		<Footer />
 		<Cursor />
+		<div id="three-canvas-container"></div>
 		<script src="../script.ts"></script>
 	</body>
 </html>
